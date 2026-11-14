@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta name="description" content="Comprima imagens direto no navegador e baixe arquivos menores com a qualidade que você escolher." />
+    <title>Compressor de imagens | Canivete Digital</title>
+    <script>try{const savedTheme=localStorage.getItem("canivete-theme");document.documentElement.dataset.theme=savedTheme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch{document.documentElement.dataset.theme="light"}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css?v=mobile-icons-2" />
+    <link rel="stylesheet" href="compressor.css?v=gsap-1" />
+  </head>
+  <body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="pocketknife-handle" viewBox="0 0 48 48"><path class="knife-handle" d="M11 28a7 7 0 0 1 7-7h16a7 7 0 0 1 0 14H18a7 7 0 0 1-7-7Z" /><circle class="knife-pin" cx="18.5" cy="28" r="2" /><path class="knife-seam" d="M29 23h5" /></symbol>
+      <symbol id="pocketknife-blade" viewBox="0 0 48 48"><path d="m19 27 3.1-18.4c.3-1.5 2.5-1.5 2.8 0L29 27H19Z" /></symbol>
+    </svg>
+    <header class="topbar">
+      <a class="brand" href="index.html#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal"><a href="index.html#ferramentas">Ferramentas</a><a href="index.html#sobre">Quem Somos?</a></nav>
+      <div class="header-actions"><button class="theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false"><dotlottie-player src="https://lottie.host/345160a8-435d-4a12-9f48-0cb01c9f2fb3/FvYnFBU2NT.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player><span class="sr-only">Alternar tema</span></button><a class="github-link" href="https://github.com" target="_blank" rel="noreferrer"><span class="github-icon">↗︎</span> Ver no GitHub</a></div>
+    </header>
+    <main class="compressor-page wrap">
+      <a class="back-link" href="index.html#ferramentas">← Todas as ferramentas</a>
+      <div class="eyebrow muted">FERRAMENTA DE IMAGEM</div>
+      <h1>Compressor de imagens</h1>
+      <p class="page-intro">Imagens menores, qualidade preservada. Seus arquivos são processados diretamente neste navegador.</p>
+
+      <section class="compressor-panel" aria-label="Comprimir imagem">
+        <label class="drop-zone" id="drop-zone" for="image-file">
+          <input id="image-file" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
+          <span class="upload-icon" aria-hidden="true">↑</span>
+          <strong>Escolha uma imagem</strong>
+          <span>ou arraste e solte aqui</span>
+          <small>JPG, PNG, WebP ou AVIF</small>
+        </label>
+        <div class="controls" id="controls" hidden>
+          <div class="selected-file"><span class="file-symbol" aria-hidden="true">▧</span><div><strong id="file-name"></strong><span id="original-size"></span></div><button id="remove-file" type="button" class="quiet-button">Trocar</button></div>
+          <div class="settings-grid">
+            <label class="field">Formato de saída<select id="output-format"><option value="image/webp">WebP — recomendado</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></label>
+            <label class="field quality-field">Qualidade <span id="quality-value">80%</span><input id="quality" type="range" min="10" max="100" value="80" /><small>Qualidade menor costuma gerar arquivos menores.</small></label>
+            <div class="target-size-control">
+              <div class="target-size-heading"><label for="max-size">Tamanho máximo do arquivo final</label><output id="target-size-value" for="max-size">Até 85% do original</output></div>
+              <input id="max-size" type="range" min="10" max="100" step="5" value="85" aria-describedby="target-size-hint" />
+              <div class="target-presets" role="group" aria-label="Escolher nível de redução"><button type="button" data-target="40">Mais leve</button><button type="button" data-target="65">Equilibrado</button><button type="button" data-target="85">Melhor qualidade</button></div>
+              <small id="target-size-hint">Escolha um arquivo para ver o tamanho estimado em KB ou MB.</small>
+            </div>
+          </div>
+          <button class="primary-button compress-button" id="compress-button" type="button">Comprimir imagem <span>→</span></button>
+          <p class="error-message" id="error-message" role="alert" hidden></p>
+        </div>
+        <div class="result" id="result" hidden aria-live="polite">
+          <div class="result-heading"><div><span class="eyebrow muted">PRONTO PARA BAIXAR</span><h2>Imagem comprimida</h2></div><span class="saved-badge" id="saved-badge"></span></div>
+          <div class="preview-grid"><figure><img id="original-preview" alt="Imagem original" /><figcaption>Original <span id="original-caption"></span></figcaption></figure><figure><img id="compressed-preview" alt="Imagem comprimida" /><figcaption>Comprimida <span id="compressed-caption"></span></figcaption></figure></div>
+          <p class="result-note" id="result-note"></p>
+          <a class="primary-button download-button" id="download-link" download>Baixar imagem <span>↓</span></a>
+          <button class="text-button" id="start-over" type="button">Comprimir outra imagem</button>
+        </div>
+      </section>
+      <section class="compressor-panel archive-panel" aria-labelledby="archive-title">
+        <div class="archive-heading"><div class="eyebrow muted">DOCUMENTOS E OUTROS ARQUIVOS</div><h2 id="archive-title">Compactar arquivos em ZIP</h2><p>Junte um ou mais arquivos em um ZIP compactado. Tudo é processado no seu navegador.</p></div>
+        <label class="archive-picker" for="archive-files"><span aria-hidden="true">＋</span><strong>Selecionar arquivos</strong><small>Você pode escolher vários arquivos</small><input id="archive-files" type="file" multiple /></label>
+        <div class="archive-controls" id="archive-controls" hidden>
+          <div class="selected-file"><span class="file-symbol" aria-hidden="true">▤</span><div><strong id="archive-file-count"></strong><span id="archive-total-size"></span></div><button id="archive-clear" type="button" class="quiet-button">Limpar</button></div>
+          <div class="settings-grid archive-settings">
+            <label class="field">Nível de compressão<select id="archive-level"><option value="1">1 — Mais rápido</option><option value="6">6 — Equilibrado</option><option value="9" selected>9 — Máximo</option></select></label>
+            <label class="field target-field">Tamanho máximo desejado <span class="field-unit">MB</span><input id="archive-max-size" type="number" min="0.01" max="1000" step="0.1" value="10" /><small>Se o ZIP passar deste tamanho, avisaremos. Nenhum arquivo será removido.</small></label>
+          </div>
+          <button class="primary-button compress-button" id="archive-button" type="button">Criar arquivo ZIP <span>→</span></button>
+          <p class="error-message" id="archive-message" role="status" hidden></p>
+          <a class="primary-button download-button" id="archive-download" download hidden>Baixar arquivo ZIP <span>↓</span></a>
+        </div>
+      </section>
+      <p class="privacy-note"><span aria-hidden="true">◈</span> Privacidade em primeiro lugar: seus arquivos são processados neste navegador e não são enviados para um servidor.</p>
+    </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <a class="brand" href="index.html#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+        <div class="donation-group"><a class="donate-link" href="https://www.asaas.com/000/c/laqwv3oizoj6f217" target="_blank" rel="noopener noreferrer"><img class="coffee-lottie" src="assets/coffee-cup.gif" alt="" aria-hidden="true"><span>Me paga um café?!</span></a></div>
+        <div class="footer-links"><a href="index.html#sobre">Sobre</a><button class="footer-popup-trigger" type="button" data-popup="faq" aria-haspopup="dialog" aria-expanded="false">FAQ</button><button class="footer-popup-trigger" type="button" data-popup="privacy" aria-haspopup="dialog" aria-expanded="false">Privacidade</button><a href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer">GitHub ↗︎</a></div>
+      </div>
+      <section class="footer-popover" id="footer-popover" role="dialog" aria-labelledby="footer-popover-title" aria-hidden="true" hidden><div class="popover-heading"><h2 id="footer-popover-title"></h2><button class="popover-close" type="button" aria-label="Fechar">×</button></div><div class="popover-content" id="footer-popover-content"></div></section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@1.3.0/dist/dotlottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"></script>
+    <script src="compressor.js?v=faq-1"></script>
+  </body>
+</html>

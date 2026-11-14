@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://canivetedigital.discloud.dev/sitemap.xml

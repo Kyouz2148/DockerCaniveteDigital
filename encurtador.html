@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta name="description" content="Encurte links longos em endereços curtos, limpos e fáceis de compartilhar." />
+    <title>Encurtador de links | Canivete Digital</title>
+    <script>try{const savedTheme=localStorage.getItem("canivete-theme");document.documentElement.dataset.theme=savedTheme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch{document.documentElement.dataset.theme="light"}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css?v=scroll-random-1" />
+    <link rel="stylesheet" href="compressor.css?v=tools-4" />
+  </head>
+  <body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="pocketknife-handle" viewBox="0 0 48 48"><path class="knife-handle" d="M11 28a7 7 0 0 1 7-7h16a7 7 0 0 1 0 14H18a7 7 0 0 1-7-7Z" /><circle class="knife-pin" cx="18.5" cy="28" r="2" /><path class="knife-seam" d="M29 23h5" /></symbol>
+      <symbol id="pocketknife-blade" viewBox="0 0 48 48"><path d="m19 27 3.1-18.4c.3-1.5 2.5-1.5 2.8 0L29 27H19Z" /></symbol>
+    </svg>
+    <header class="topbar">
+      <a class="brand" href="index.html#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal"><a href="index.html#ferramentas">Ferramentas</a><a href="index.html#sobre">Quem Somos?</a></nav>
+      <div class="header-actions"><button class="theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false"><dotlottie-player src="https://lottie.host/345160a8-435d-4a12-9f48-0cb01c9f2fb3/FvYnFBU2NT.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player><span class="sr-only">Alternar tema</span></button><a class="github-link" href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer"><span class="github-icon">↗︎</span> Ver no GitHub</a></div>
+    </header>
+    <main class="compressor-page wrap">
+      <a class="back-link" href="index.html#ferramentas">← Todas as ferramentas</a>
+      <div class="eyebrow muted">UTILIDADES</div>
+      <h1>Encurtador de links</h1>
+      <p class="page-intro">Links curtos, limpos e fáceis de compartilhar. Crie um código aleatório ou escolha um apelido personalizado.</p>
+
+      <section class="compressor-panel" aria-label="Encurtar link">
+        <form id="shorten-form" novalidate>
+          <div class="settings-grid" style="padding-top: 4px;">
+            <div class="mode-switch" role="group" aria-label="Tipo de link encurtado">
+              <button type="button" class="active" data-mode="short">Link ultra curto (menor URL)</button>
+              <button type="button" data-mode="local">Neste site (com cliques)</button>
+            </div>
+
+            <label class="field" style="grid-column: 1 / -1;">
+              Link original (URL)
+              <input id="target-url" type="text" inputmode="url" placeholder="https://exemplo.com/pagina-com-endereco-muito-longo" required />
+            </label>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="custom-code">Apelido personalizado (opcional)</label>
+              <div class="slug-input-wrap">
+                <span class="slug-prefix" id="slug-prefix">is.gd/</span>
+                <input id="custom-code" type="text" maxlength="32" placeholder="meu_link (ou deixe vazio para menor código)" />
+              </div>
+              <span class="field-hint" id="slug-hint">Deixe vazio para gerar o menor link possível (ex.: is.gd/abc123). Ou use 5 a 30 letras, números ou _.</span>
+            </div>
+          </div>
+
+          <button class="primary-button compress-button" id="shorten-button" type="submit">Encurtar link <span>→</span></button>
+          <p class="error-message" id="error-message" role="alert" hidden></p>
+        </form>
+
+        <div class="result" id="result" hidden aria-live="polite" style="margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line);">
+          <div class="result-heading">
+            <div>
+              <span class="eyebrow muted">PRONTO PARA COMPARTILHAR</span>
+              <h2>Link encurtado</h2>
+            </div>
+            <span class="saved-badge" id="result-badge">Menor link</span>
+          </div>
+
+          <div class="share-link-box">
+            <input id="short-url-output" type="text" readonly aria-label="Link encurtado gerado" />
+            <button class="copy-button" id="copy-short-url" type="button">Copiar link</button>
+          </div>
+          <p class="result-note" id="result-note"></p>
+          <div class="result-actions">
+            <a class="primary-button download-button" id="open-short-url" target="_blank" rel="noopener noreferrer">Abrir link curto <span>↗︎</span></a>
+            <button class="text-button" id="reset-form" type="button">Encurtar outro link</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="compressor-panel archive-panel" id="links-history-panel" hidden aria-labelledby="links-history-title">
+        <div class="archive-heading" style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div>
+            <div class="eyebrow muted">SEUS LINKS NESTE NAVEGADOR</div>
+            <h2 id="links-history-title">Links criados</h2>
+          </div>
+          <button class="quiet-button" id="refresh-clicks" type="button">Atualizar cliques</button>
+        </div>
+        <div class="history-list" id="links-list"></div>
+      </section>
+
+      <p class="privacy-note"><span aria-hidden="true">◈</span> Apenas endereços `http://` e `https://` válidos são aceitos para redirecionamento seguro.</p>
+    </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <a class="brand" href="index.html#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+        <div class="donation-group"><a class="donate-link" href="https://www.asaas.com/000/c/laqwv3oizoj6f217" target="_blank" rel="noopener noreferrer"><img class="coffee-lottie" src="assets/coffee-cup.gif" alt="" aria-hidden="true"><span>Me paga um café?!</span></a></div>
+        <div class="footer-links"><a href="index.html#sobre">Sobre</a><button class="footer-popup-trigger" type="button" data-popup="faq" aria-haspopup="dialog" aria-expanded="false">FAQ</button><button class="footer-popup-trigger" type="button" data-popup="privacy" aria-haspopup="dialog" aria-expanded="false">Privacidade</button><a href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer">GitHub ↗︎</a></div>
+      </div>
+      <section class="footer-popover" id="footer-popover" role="dialog" aria-labelledby="footer-popover-title" aria-hidden="true" hidden><div class="popover-heading"><h2 id="footer-popover-title"></h2><button class="popover-close" type="button" aria-label="Fechar">×</button></div><div class="popover-content" id="footer-popover-content"></div></section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@1.3.0/dist/dotlottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="encurtador.js?v=tools-5"></script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta name="description" content="Redimensione imagens por pixels ou porcentagem direto no navegador, mantendo a proporção e a qualidade." />
+    <title>Redimensionar imagem | Canivete Digital</title>
+    <script>try{const savedTheme=localStorage.getItem("canivete-theme");document.documentElement.dataset.theme=savedTheme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch{document.documentElement.dataset.theme="light"}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css?v=scroll-random-1" />
+    <link rel="stylesheet" href="compressor.css?v=tools-1" />
+  </head>
+  <body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="pocketknife-handle" viewBox="0 0 48 48"><path class="knife-handle" d="M11 28a7 7 0 0 1 7-7h16a7 7 0 0 1 0 14H18a7 7 0 0 1-7-7Z" /><circle class="knife-pin" cx="18.5" cy="28" r="2" /><path class="knife-seam" d="M29 23h5" /></symbol>
+      <symbol id="pocketknife-blade" viewBox="0 0 48 48"><path d="m19 27 3.1-18.4c.3-1.5 2.5-1.5 2.8 0L29 27H19Z" /></symbol>
+    </svg>
+    <header class="topbar">
+      <a class="brand" href="index.html#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal"><a href="index.html#ferramentas">Ferramentas</a><a href="index.html#sobre">Quem Somos?</a></nav>
+      <div class="header-actions"><button class="theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false"><dotlottie-player src="https://lottie.host/345160a8-435d-4a12-9f48-0cb01c9f2fb3/FvYnFBU2NT.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player><span class="sr-only">Alternar tema</span></button><a class="github-link" href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer"><span class="github-icon">↗︎</span> Ver no GitHub</a></div>
+    </header>
+    <main class="compressor-page wrap">
+      <a class="back-link" href="index.html#ferramentas">← Todas as ferramentas</a>
+      <div class="eyebrow muted">FERRAMENTA DE IMAGEM</div>
+      <h1>Redimensionar imagem</h1>
+      <p class="page-intro">Ajuste o tamanho em pixels ou porcentagem. Seus arquivos são processados diretamente neste navegador.</p>
+
+      <section class="compressor-panel" aria-label="Redimensionar imagem">
+        <label class="drop-zone" id="drop-zone" for="image-file">
+          <input id="image-file" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp,image/svg+xml" />
+          <span class="upload-icon" aria-hidden="true">⤢</span>
+          <strong>Escolha uma imagem</strong>
+          <span>ou arraste e solte aqui</span>
+          <small>JPG, PNG, WebP, AVIF, GIF, BMP ou SVG</small>
+        </label>
+        <div class="controls" id="controls" hidden>
+          <div class="selected-file">
+            <span class="file-symbol" aria-hidden="true">▧</span>
+            <div>
+              <strong id="file-name"></strong>
+              <span id="original-meta"></span>
+            </div>
+            <button id="remove-file" type="button" class="quiet-button">Trocar</button>
+          </div>
+          <div class="settings-grid">
+            <div class="mode-switch" role="group" aria-label="Modo de redimensionamento">
+              <button type="button" class="active" data-mode="pixels">Por pixels (px)</button>
+              <button type="button" data-mode="percent">Por porcentagem (%)</button>
+            </div>
+
+            <div class="checkbox-field">
+              <label class="checkbox-label" id="lock-ratio-wrap">
+                <input id="lock-ratio" type="checkbox" checked />
+                <span>Manter proporção original</span>
+              </label>
+              <span class="dimension-readout" id="dimension-readout"></span>
+            </div>
+
+            <label class="field" id="width-field">
+              Largura (px)
+              <input id="target-width" type="number" min="1" max="10000" step="1" />
+            </label>
+            <label class="field" id="height-field">
+              Altura (px)
+              <input id="target-height" type="number" min="1" max="10000" step="1" />
+            </label>
+
+            <div class="target-size-control" id="percent-control" hidden>
+              <div class="target-size-heading">
+                <label for="scale-percent">Escala em porcentagem</label>
+                <output id="percent-value" for="scale-percent">100%</output>
+              </div>
+              <input id="scale-percent" type="range" min="10" max="200" step="5" value="100" />
+              <div class="target-presets" role="group" aria-label="Atalhos de porcentagem">
+                <button type="button" data-percent="25">25%</button>
+                <button type="button" data-percent="50">50%</button>
+                <button type="button" data-percent="75">75%</button>
+                <button type="button" data-percent="150">150%</button>
+                <button type="button" data-percent="200">200%</button>
+              </div>
+            </div>
+
+            <div class="target-size-control" id="pixel-presets-wrap">
+              <div class="target-size-heading">
+                <span>Larguras comuns</span>
+              </div>
+              <div class="target-presets" id="pixel-presets" role="group" aria-label="Atalhos de largura em pixels">
+                <button type="button" data-width="640">640 px</button>
+                <button type="button" data-width="1080">1080 px</button>
+                <button type="button" data-width="1280">1280 px</button>
+                <button type="button" data-width="1920">1920 px</button>
+              </div>
+            </div>
+
+            <label class="field">
+              Formato de saída
+              <select id="output-format">
+                <option value="auto">Mesmo formato da imagem</option>
+                <option value="image/webp">WebP</option>
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/png">PNG</option>
+              </select>
+            </label>
+            <label class="field quality-field">
+              Qualidade <span id="quality-value">90%</span>
+              <input id="quality" type="range" min="10" max="100" value="90" />
+              <small id="quality-hint">Ajuste aplicado para WebP e JPEG.</small>
+            </label>
+          </div>
+          <button class="primary-button compress-button" id="resize-button" type="button">Redimensionar imagem <span>→</span></button>
+          <p class="error-message" id="error-message" role="alert" hidden></p>
+        </div>
+
+        <div class="result" id="result" hidden aria-live="polite">
+          <div class="result-heading">
+            <div>
+              <span class="eyebrow muted">PRONTO PARA BAIXAR</span>
+              <h2>Imagem redimensionada</h2>
+            </div>
+            <span class="saved-badge" id="result-badge"></span>
+          </div>
+          <div class="preview-grid">
+            <figure>
+              <img id="original-preview" alt="Imagem original" />
+              <figcaption>Original <span id="original-caption"></span></figcaption>
+            </figure>
+            <figure>
+              <img id="resized-preview" alt="Imagem redimensionada" />
+              <figcaption>Redimensionada <span id="resized-caption"></span></figcaption>
+            </figure>
+          </div>
+          <p class="result-note" id="result-note"></p>
+          <div class="result-actions">
+            <a class="primary-button download-button" id="download-link" download>Baixar imagem <span>↓</span></a>
+            <button class="text-button" id="start-over" type="button">Redimensionar outra imagem</button>
+          </div>
+        </div>
+      </section>
+      <p class="privacy-note"><span aria-hidden="true">◈</span> Privacidade em primeiro lugar: suas imagens são processadas neste navegador e não são enviadas para um servidor.</p>
+    </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <a class="brand" href="index.html#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+        <div class="donation-group"><a class="donate-link" href="https://www.asaas.com/000/c/laqwv3oizoj6f217" target="_blank" rel="noopener noreferrer"><img class="coffee-lottie" src="assets/coffee-cup.gif" alt="" aria-hidden="true"><span>Me paga um café?!</span></a></div>
+        <div class="footer-links"><a href="index.html#sobre">Sobre</a><button class="footer-popup-trigger" type="button" data-popup="faq" aria-haspopup="dialog" aria-expanded="false">FAQ</button><button class="footer-popup-trigger" type="button" data-popup="privacy" aria-haspopup="dialog" aria-expanded="false">Privacidade</button><a href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer">GitHub ↗︎</a></div>
+      </div>
+      <section class="footer-popover" id="footer-popover" role="dialog" aria-labelledby="footer-popover-title" aria-hidden="true" hidden><div class="popover-heading"><h2 id="footer-popover-title"></h2><button class="popover-close" type="button" aria-label="Fechar">×</button></div><div class="popover-content" id="footer-popover-content"></div></section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@1.3.0/dist/dotlottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="redimensionar.js?v=tools-1"></script>
+  </body>
+</html>

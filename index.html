@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta name="application-name" content="Canivete Digital" />
+    <meta name="author" content="Canivete Digital" />
+    <meta name="description" content="Conheça o Canivete Digital, projeto open source de ferramentas online para imagens, PDFs, QR Codes e links. Em desenvolvimento." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://canivetedigital.discloud.dev/" />
+    <link rel="sitemap" type="application/xml" href="https://canivetedigital.discloud.dev/sitemap.xml" />
+    <title>Canivete Digital | Ferramentas online para o dia a dia</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Canivete Digital" />
+    <meta property="og:title" content="Canivete Digital | Ferramentas online para o dia a dia" />
+    <meta property="og:description" content="Projeto open source de ferramentas online para imagens, PDFs, QR Codes e links. Em desenvolvimento." />
+    <meta property="og:url" content="https://canivetedigital.discloud.dev/" />
+    <meta property="og:image" content="https://canivetedigital.discloud.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Canivete Digital — pequenas tarefas resolvidas" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Canivete Digital | Ferramentas online para o dia a dia" />
+    <meta name="twitter:description" content="Projeto open source de ferramentas online para imagens, PDFs, QR Codes e links. Em desenvolvimento." />
+    <meta name="twitter:image" content="https://canivetedigital.discloud.dev/og-image.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://canivetedigital.discloud.dev/#website",
+            "url": "https://canivetedigital.discloud.dev/",
+            "name": "Canivete Digital",
+            "alternateName": "Canivete",
+            "inLanguage": "pt-BR",
+            "description": "Projeto open source de ferramentas online para facilitar tarefas do dia a dia.",
+            "publisher": { "@id": "https://canivetedigital.discloud.dev/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://canivetedigital.discloud.dev/#organization",
+            "name": "Canivete Digital",
+            "url": "https://canivetedigital.discloud.dev/",
+            "sameAs": ["https://github.com/Kyouz2148/canivetedigital"]
+          }
+        ]
+      }
+    </script>
+    <script>try{const savedTheme=localStorage.getItem("canivete-theme");document.documentElement.dataset.theme=savedTheme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch{document.documentElement.dataset.theme="light"}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css?v=docker-1" />
+  </head>
+  <body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="pocketknife-handle" viewBox="0 0 48 48">
+        <path class="knife-handle" d="M11 28a7 7 0 0 1 7-7h16a7 7 0 0 1 0 14H18a7 7 0 0 1-7-7Z" />
+        <circle class="knife-pin" cx="18.5" cy="28" r="2" />
+        <path class="knife-seam" d="M29 23h5" />
+      </symbol>
+      <symbol id="pocketknife-blade" viewBox="0 0 48 48"><path d="m19 27 3.1-18.4c.3-1.5 2.5-1.5 2.8 0L29 27H19Z" /></symbol>
+    </svg>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#ferramentas">Ferramentas</a><a href="#docker">Docker</a><a href="#sobre">Quem Somos?</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
+          <dotlottie-player src="https://lottie.host/345160a8-435d-4a12-9f48-0cb01c9f2fb3/FvYnFBU2NT.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player>
+          <span class="sr-only">Alternar tema</span>
+        </button>
+        <a class="github-link" href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer"><span class="github-icon">↗︎</span> Ver no GitHub</a>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <h1>Pequenas tarefas<br /><span>Resolvidas</span></h1>
+          <p>Um lugar só para aquelas ferramentas que você sempre acaba procurando. Rápidas, gratuitas e sem complicação.</p>
+          <a class="primary-button" href="#ferramentas">Explorar ferramentas <span>↓</span></a>
+        </div>
+        <div class="hero-art" aria-label="Ilustração de um canivete suíço digital">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-card card-a"><svg class="pdf-tool-symbol" viewBox="0 0 32 36" aria-hidden="true"><path d="M6 2h13l8 8v23H6z"/><path d="M19 2v8h8"/><path d="M10 16h12M10 20h12"/><text x="10" y="29">PDF</text></svg><small>PDF</small></div>
+          <div class="art-card card-b"><span>▧</span><small>IMG</small></div>
+          <div class="art-card card-c"><span>⌁</span><small>LINK</small></div>
+          <div class="toolkit"><div class="toolkit-shine"></div><div class="toolkit-cross"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></div><div class="toolkit-label">CANIVETE<br /><small>DIGITAL</small></div><div class="toolkit-notch"></div></div>
+          <div class="art-caption">um kit de ferramentas<br />sempre à mão <span>↗︎</span></div>
+        </div>
+      </section>
+
+      <section class="tools-section" id="ferramentas">
+        <div class="wrap">
+          <div class="section-heading"><div><div class="eyebrow muted">CAIXA DE FERRAMENTAS</div><h2>O que você precisa?</h2></div><div class="tools-heading-actions"><button class="suggestion-trigger" type="button" aria-haspopup="dialog" aria-controls="suggestion-dialog">Sugestões de ferramentas? <b>Fale conosco!</b></button><span class="tool-count"><b>09</b> ferramentas</span></div></div>
+          <div class="filters" role="group" aria-label="Filtrar ferramentas">
+            <button class="filter active" data-filter="all">Todas <span>09</span></button>
+            <button class="filter" data-filter="imagem">Imagens <span>03</span></button>
+            <button class="filter" data-filter="pdf">PDFs <span>02</span></button>
+            <button class="filter" data-filter="util">Utilidades <span>04</span></button>
+          </div>
+          <div class="tool-grid" id="tool-grid"></div>
+          <div class="privacy-banner"><div class="privacy-icon">◈</div><div><strong>Seus arquivos são seus.</strong><p>Privacidade em primeiro lugar. Sempre que possível, o processamento acontece direto no seu navegador.</p></div><span class="privacy-arrow">↗︎</span></div>
+        </div>
+      </section>
+
+      <section class="docker-section" id="docker" aria-labelledby="docker-title">
+        <div class="wrap">
+          <div class="docker-header">
+            <div>
+              <div class="eyebrow muted">AUTO-HOSPEDAGEM • DOCKER</div>
+              <h2 id="docker-title">Hospede no seu próprio computador</h2>
+            </div>
+            <p>Prefere rodar tudo na sua máquina ou rede local? O projeto já inclui <code>Dockerfile</code> e <code>docker-compose.yml</code> prontos para subir o Canivete Digital em segundos.</p>
+          </div>
+
+          <div class="docker-pills" aria-label="Requisitos e destaques do container">
+            <span class="docker-pill"><span>🐳</span> Docker &amp; Docker Compose</span>
+            <span class="docker-pill"><span>🗄️</span> Banco SQLite integrado</span>
+            <span class="docker-pill"><span>◈</span> Porta padrão: 8080</span>
+            <span class="docker-pill"><span>⚡</span> Node.js 24 + Sharp inclusos</span>
+          </div>
+
+          <div class="docker-grid">
+            <article class="docker-card">
+              <div class="docker-card-top">
+                <span class="docker-step">Opção 1 • Recomendado</span>
+              </div>
+              <h3>Subir com Docker Compose</h3>
+              <p>Baixe o repositório e inicie o container com banco <strong>SQLite</strong> pronto em volume local (<code>/app/.data/canivete.db</code>) e sem configuração externa.</p>
+              <div class="docker-code-box">
+                <div class="docker-code-bar">
+                  <span>terminal — docker compose</span>
+                  <button class="docker-copy-btn" type="button" data-copy-target="docker-cmd-compose">Copiar</button>
+                </div>
+                <pre><code id="docker-cmd-compose">git clone https://github.com/Kyouz2148/dockercanivetedigital.git
+cd dockercanivetedigital
+docker compose up -d --build</code></pre>
+              </div>
+            </article>
+
+            <article class="docker-card">
+              <div class="docker-card-top">
+                <span class="docker-step">Opção 2 • Docker CLI</span>
+              </div>
+              <h3>Construir e executar diretamente</h3>
+              <p>Se preferir usar apenas o comando <code>docker</code>, construa a imagem e monte um volume para manter imagens e links salvos no SQLite.</p>
+              <div class="docker-code-box">
+                <div class="docker-code-bar">
+                  <span>terminal — docker build &amp; run</span>
+                  <button class="docker-copy-btn" type="button" data-copy-target="docker-cmd-cli">Copiar</button>
+                </div>
+                <pre><code id="docker-cmd-cli">docker build -t canivete-digital .
+docker run -d -p 8080:8080 -v canivete_data:/app/.data --name canivete canivete-digital</code></pre>
+              </div>
+            </article>
+          </div>
+
+          <div class="docker-note">
+            <div>
+              <strong>Acesso local com SQLite pronto:</strong> após subir o container, abra <code>http://localhost:8080</code> no navegador. Tanto a <em>Hospedagem de imagens</em> (com exclusão automática em até 7 dias) quanto os links locais usam <strong>SQLite</strong> em <code>/app/.data/canivete.db</code> — sem precisar instalar PostgreSQL.
+            </div>
+            <a class="text-link" href="https://github.com/Kyouz2148/dockercanivetedigital" target="_blank" rel="noreferrer">Ver arquivos no GitHub <span>↗︎</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about wrap" id="sobre">
+        <div class="about-mark" aria-label="Símbolo Canivete"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></div>
+        <div class="about-heading"><div class="eyebrow muted">UM PROJETO ABERTO</div><h2>Feito por pessoas,<br />para pessoas.</h2></div>
+        <div class="about-content">
+          <div class="about-highlight">
+            <dotlottie-player class="about-lottie" src="https://lottie.host/19d2f1b0-cd0d-4b44-8128-0b7932ad755a/SVqbsWPFUT.lottie" background="transparent" speed="1" loop autoplay aria-label="Animação para te ajudar na correria do dia a dia"></dotlottie-player>
+            <p class="about-phrase" aria-label="Para te ajudar na correria do dia a dia!"><span>Para te ajudar</span> <span>na correria</span> <span>do dia a dia!</span></p>
+          </div>
+          <p class="about-description">O Canivete é um projeto open source criado para deixar as tarefas do dia a dia um pouco mais fáceis. Sem paywall, sem mistério — e com espaço para todo mundo contribuir.</p>
+          <a class="text-link" href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer">Conheça o projeto <span>↗︎</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <a class="brand" href="#inicio" aria-label="Canivete, início"><span class="brand-mark"><svg class="knife-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#pocketknife-handle"></use><use class="knife-blade" href="#pocketknife-blade"></use></svg></span><span class="brand-name">canivete</span></a>
+        <div class="donation-group"><a class="donate-link" href="https://www.asaas.com/000/c/laqwv3oizoj6f217" target="_blank" rel="noopener noreferrer"><img class="coffee-lottie" src="assets/coffee-cup.gif" alt="" aria-hidden="true"><span>Me paga um café?!</span></a></div>
+        <div class="footer-links"><a href="#sobre">Sobre</a><button class="footer-popup-trigger" type="button" data-popup="faq" aria-haspopup="dialog" aria-expanded="false">FAQ</button><button class="footer-popup-trigger" type="button" data-popup="privacy" aria-haspopup="dialog" aria-expanded="false">Privacidade</button><a href="https://github.com/Kyouz2148/canivetedigital" target="_blank" rel="noreferrer">GitHub ↗︎</a></div>
+      </div>
+      <section class="footer-popover" id="footer-popover" role="dialog" aria-labelledby="footer-popover-title" aria-hidden="true" hidden>
+        <div class="popover-heading"><h2 id="footer-popover-title"></h2><button class="popover-close" type="button" aria-label="Fechar">×</button></div>
+        <div class="popover-content" id="footer-popover-content"></div>
+      </section>
+    </footer>
+    <dialog class="suggestion-dialog" id="suggestion-dialog" aria-labelledby="suggestion-title">
+      <div class="suggestion-modal">
+        <button class="suggestion-close" type="button" aria-label="Fechar janela">×</button>
+        <div class="eyebrow muted">IDEIA NA CABEÇA?</div>
+        <h2 id="suggestion-title">Sugestões de ferramentas</h2>
+        <p>Sentiu falta de alguma ferramenta por aqui? Mande sua ideia por e-mail. Vamos avaliar a sugestão para uma possível implementação no Canivete.</p>
+        <a class="suggestion-email" href="mailto:kyouz+rey6fekqw9b4rrzr5a7w@boards.trello.com?subject=Sugest%C3%A3o%20de%20ferramenta">Enviar por e-mail aqui</a>
+      </div>
+    </dialog>
+    <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@1.3.0/dist/dotlottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
+    <script src="app.js?v=faq-2"></script>
+  </body>
+</html>
