@@ -16,6 +16,8 @@ const CLEANUP_INTERVAL_MS = 60 * 1000;
 const ALLOWED_SHARP_FORMATS = new Set(["jpeg", "png", "webp", "tiff", "gif", "heif"]);
 const PRIVATE_FILES = new Set([
   "README.md",
+  "Dockerfile",
+  "docker-compose.yml",
   "server.js",
   "package.json",
   "package-lock.json",

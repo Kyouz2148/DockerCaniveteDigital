@@ -130,7 +130,3 @@ Por padrão, a imagem Docker já vem configurada para usar **SQLite** integrado 
 3. Faça as mudanças e abra um pull request com uma descrição clara.
 
 Para propostas maiores, use a opção **Sugestões de ferramentas? Fale conosco!** no site ou abra uma issue no GitHub.
-
-## Licença
-
-Este repositório ainda não contém um arquivo de licença. Uma licença precisa ser escolhida e adicionada para definir como outras pessoas podem reutilizar e distribuir o código.
